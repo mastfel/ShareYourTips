@@ -1,0 +1,32 @@
+  
+ {% extends 'base.html.twig' %}
+
+{% block title %}Paratge tes astuces{% endblock %}
+
+{% block body %}
+
+    
+   
+        <h1 class="text-center my-4">Modifier mes infos</h1>
+    
+<div class="row">
+    <div class="col-8 mx-auto">
+
+         {{ form_start(form) }}
+
+                <div class="row">
+                    <div class="col-6">{{ form_row(form.firstname) }}</div>
+                    <div class="col-6">{{ form_row(form.lastname) }}</div>
+                </div>
+
+              
+                {{ form_row(form.email) }}
+
+               
+
+            {{ form_end(form) }}
+          
+    
+    </div>
+</div>
+{% endblock %}

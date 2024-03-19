@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partage tes astuces{% endblock %}
+
+{% block body %}
+<div class="row">
+        <div class="col-6 mx-auto formulaire">
+    <p class="message">
+        Si un compte correspondant à votre adresse e-mail, un e-mail vous  sera envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p class="message">Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou <a href="{{ path('app_forgot_password_request') }}">réessayer</a>.</p>
+    </div>
+{% endblock %}

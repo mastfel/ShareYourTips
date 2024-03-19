@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partage tes astuces{% endblock %}
+
+{% block body %}
+<div class="row">
+        <div class="col-6 mx-auto formulaire">
+    <h1 class="h3 mb-3 font-weight-normal text-center">Réinitialisez votre mot de passe</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-lg btn-warning my-3 d-block mx-auto">Réinitialiser le mot de passe</button>
+    {{ form_end(resetForm) }}
+    </div>
+    </div>
+{% endblock %}

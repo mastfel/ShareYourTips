@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partage tes astuces{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center my-4">Mes informations</h1>
+ 
+
+
+    <div class="row">
+        <div class="col-8 mx-auto">
+            {% include 'include/_flashes.html.twig' %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+
+            <div class="card text-center pers">
+                <div class="card-header">
+                    {{ app.user.firstname }} {{ app.user.lastname | capitalize }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Total astuces publiés : {{ articles | length }}</h5>
+                    <p class="card-text text-center">Mon email : {{ app.user.email }}</p>
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    Compte créé le : {{ app.user.createdAt | date('d/m/Y') }} | Modifié : {{ app.user.updatedAt | date('d/m/Y') }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    {# ------------------------------------------modifier et supprimer profile-------------------------------------------------------- #}
+    <div class="col-10 mx-auto">
+
+            <table class="table">
+                <thead>
+                <tr class="profile">
+                    <th>#</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+               
+                
+                    <tr class="profile1">
+                        <td>{{ app.user.id }}</td>
+                        <td>{{ app.user.firstname }}</td>
+                        <td>{{ app.user.lastname }}</td>
+                        
+                        <td>{{ app.user.email }}</td>
+                        
+                        
+                        <td>
+                            <a href="{{path('user_update', {'id':app.user.id} ) }}" class="btn btn-sm btn-primary" title="Modifier"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="{{path('hard_delete_user', {'id':app.user.id} ) }}" class="btn btn-sm btn-danger" title="Supprimer mon compte"><i class="fa-solid fa-trash"></i></a>
+                            
+        
+                        </td>
+                    </tr>
+             
+                </tbody>
+            </table>
+            <p class="alerte"> <i class="fa-solid fa-triangle-exclamation"></i>Pour supprimer votre compte vous devez d'abord supprimer toutes vos astuces publiées <i class="fa-solid fa-triangle-exclamation"></i> </p>
+        </div>
+
+
+
+
+
+
+  {# --------------------------------------------------------------------------------------------- #}
+</div>
+
+{% endblock %}
+
+

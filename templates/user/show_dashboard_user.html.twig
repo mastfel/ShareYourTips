@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+
+<div class="row">
+        <div class="col-6 mx-auto">
+            {% include 'include/_flashes.html.twig' %}
+        </div>
+    </div> 
+    
+  <div class="row">
+        <div class="col-10 mx-auto my-4">
+
+            <h1 class="text-center">Toutes mes astuces publiées </h1>
+
+            <table class="table">
+                <thead>
+                <tr class="dashboard">
+                    <th>#</th>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th>Catégorie</th>
+                    <th>Créée le</th>
+                    <th>Modifiée le</th>
+            
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title | length > 20 ? article.title | slice(0,20) ~ '...' : article.title }}</td>
+                        <td>{{ article.content | length > 20 ? article.content | slice(0,20) ~ '...' : article.content }}</td>
+                        <td class="cat">{{ article.category.name }}</td>
+                         <td class="author"> {{ article.createdAt | date('d/m/Y') }} | Par : {{ article.author.firstname }} {{ article.author.lastname }}</td>
+                    
+                        <td>{{ article.updatedAt | date('d/m/Y') }}</td>
+                       
+                        <td>
+                            <a href="{{ path('update_article', {'id': article.id}) }}" class="text-info" title="Modifier mon astuce"><i class="fa fa-edit"></i></a>
+                             <a href="{{ path('hard_delete_article', {'id': article.id}) }}" class="text-danger" title="Supprimer mon astuce" onclick="return confirm('Voulez-vous supprimer votre astuce?')"><i class="fa fa-trash"></i></a>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+<div class="row mx-auto">
+        <div class="col-4"><a href="{{ path('create_article') }}" class="btn btn-success">Ajouter une astuce</a></div>
+        
+
+    </div>
+    <br>
+<br>
+<hr>
+
+
+
+
+      
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+ 

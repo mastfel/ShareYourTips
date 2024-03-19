@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}Partage tes astuces{% endblock %}
+
+{% block body %}
+
+<div class="row ">
+        
+    </div>
+	<div class="row justify-content-center  ">
+		<div class="col-md-5 text-center mb-5 formulaire">
+			<div class="col-10 mx-auto my-4 ">
+            {% include 'include/_flashes.html.twig' %}
+        </div>
+			<h1 class="text-center my-5 ">Contact</h1>
+			
+		 <div class="form-group">
+			{{ form_start(form) }}
+
+			<div class="form-group">
+				
+				<h3>{{ form_row(form.firstname, {'attr': {'class': 'form-control'}}) }}</h3>
+			</div>
+
+			<div class="form-group">
+				<h3>{{ form_row(form.lastname, {'attr': {'class': 'form-control'}}) }}</h3>
+			</div>
+
+			<div class="form-group">
+				<h3>{{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}</h3>
+			</div>
+
+			
+
+			<div class="form-group">
+				<h3>{{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}</h3>
+			</div>
+
+			
+
+			{{ form_end(form) }}
+			</div>
+		</div>
+
+	</div>   
+
+
+{# ------------------------------------------------------------------------------------ #}
+{# <div class="row">
+        <div class="col-6 mx-auto">
+            {{ form(form) }}
+        </div>
+    </div> #}
+
+
+{% endblock %}

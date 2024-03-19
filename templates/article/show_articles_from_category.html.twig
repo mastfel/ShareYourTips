@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} astuces  de {{ category.name }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center my-4 category"> Catégorie {{ category.name }}</h1>
+
+    {% if articles is not empty %}
+
+    <div class="col-9 mx-auto mb-5">
+
+        {% for article in articles %}
+            {# <div class="row mb-4">
+
+                <div class="col-5">
+                    <a href="#" title="voir l'article">
+                        <img src="{{ asset('uploads/' ~ article.photo) }}" alt="{{ article.title }}" class="img-fluid rounded shadow">
+                    </a>
+                </div>
+
+                <div class="col-7">
+                    <a href="#" class="text-decoration-none text-dark">{{ article.title }}</a>
+                    <p class="text-muted">{{ article.subtitle }}</p>
+                </div>
+
+            </div> #}
+            <div class="col-3 my-3 mx-2 mx-auto">
+                <div class="card" style="width: 18rem; height: 26rem;">
+
+                    <img width="230" height="130" src="{{ asset('uploads/' ~ article.photo) }}" class="card-img-top img-custom-thumbnail" alt="{{ article.title }}">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title | length > 20 ? article.title | slice(0,20) ~ '...' : article.title }}</h5>
+                        <h6 class="card-title">{{ article.subtitle | length > 30 ? article.subtitle | slice(0,30) ~ '...' : article.subtitle }}</h6>
+                        <p class="card-text">{{ article.content | length > 50 ? article.content | slice(0,50) ~ '...' : article.content | raw }}</p>
+                        <a href="{{ path('show_article', {'cat_alias': article.category.alias, 'article_alias': article.alias, 'id': article.id}) }}"
+                           class="btn btn-primary d-block mx-auto">Voir l'astuce</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+
+{% endblock %}
+
+
+
